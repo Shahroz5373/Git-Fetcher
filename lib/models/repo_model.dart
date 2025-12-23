@@ -20,7 +20,7 @@ class RepoModel {
     required this.htmlUrl,
   });
 
-  factory RepoModel.fromjson(Map<String, dynamic> json) {
+  factory RepoModel.fromJson(Map<String, dynamic> json) {
     return RepoModel(
       id: json['id'],
       name: json['name'],

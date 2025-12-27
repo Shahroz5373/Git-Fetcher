@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:github_fetcher/providers/future_provider.dart';
+import 'package:github_fetcher/screens/repo_card.dart';
 
 class FetchedRepos extends ConsumerStatefulWidget {
   const FetchedRepos({super.key});
@@ -50,12 +51,15 @@ class _FetchedReposState extends ConsumerState<FetchedRepos> {
             ],
           ),
         ),
-        data: (data) => ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (context, index) {
-            return Container();
-          },
-        ),
+        data: (data) => data.isEmpty
+            ? Center(child: Text('No repositories found'))
+            : ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final repo = data[index];
+                  return RepoCard(repos: repo);
+                },
+              ),
       ),
     );
   }

@@ -24,9 +24,9 @@ Future<List<RepoModel>> getRepos(Ref ref) async {
 
   // query parameters
   const languages = ['Python', 'JavaScript', 'Java', 'C++', 'TypeScript'];
-  final languageQuery = languages.map((l) => 'language:$l').join('+');
+  final languageQuery = languages.map((l) => 'language:$l').join(' ');
   final url = Uri.https('api.github.com', '/search/repositories', {
-    'q': 'pushed:>=$time+$languageQuery',
+    'q': 'pushed:>=$time $languageQuery',
     'sort': 'updated',
     'order': 'desc',
     'per_page': '20',

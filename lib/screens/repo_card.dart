@@ -4,7 +4,7 @@ import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
 class RepoCard extends StatefulWidget {
   final RepoModel repos;
-  RepoCard({super.key, required this.repos});
+  const RepoCard({super.key, required this.repos});
 
   @override
   State<RepoCard> createState() => _RepoCardState();
@@ -14,14 +14,7 @@ class _RepoCardState extends State<RepoCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Colors.blue, Colors.pink],
-        ),
-        //color: Colors.blueGrey,
-      ),
+      padding: EdgeInsets.all(20),
       child: Center(
         child: GlassContainer(
           blur: 10,
@@ -99,49 +92,45 @@ class _RepoCardState extends State<RepoCard> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        label: Text(
-                          'language:${widget.repos.language}',
-                          style: TextStyle(color: Colors.black, fontSize: 11),
-                        ),
-                        icon: Icon(
-                          Icons.circle,
-                          color: getLanguageColor(
-                            language: widget.repos.language.toString(),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.white.withValues(alpha: 0.3),
-                        ),
+
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: ElevatedButton.icon(
+                    onPressed: () {},
+                    label: Text(
+                      '${widget.repos.language}',
+                      style: TextStyle(color: Colors.black, fontSize: 11),
+                    ),
+                    icon: Icon(
+                      Icons.circle,
+                      color: getLanguageColor(
+                        language: widget.repos.language.toString(),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        label: Text(
-                          'updatedAt:${widget.repos.updatedAt} ',
-                          style: TextStyle(color: Colors.black, fontSize: 11),
-                        ),
-                        icon: Icon(
-                          Icons.history_outlined,
-                          color: Colors.green,
-                          size: 25,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.white.withValues(alpha: 0.3),
-                        ),
-                      ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.white.withValues(alpha: 0.3),
                     ),
-                  ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: ElevatedButton.icon(
+                    onPressed: () {},
+                    label: Text(
+                      'updatedAt:${widget.repos.updatedAt} ',
+                      style: TextStyle(color: Colors.black, fontSize: 11),
+                    ),
+                    icon: Icon(
+                      Icons.history_outlined,
+                      color: Colors.green,
+                      size: 25,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.white.withValues(alpha: 0.3),
+                    ),
+                  ),
                 ),
               ],
             ),
